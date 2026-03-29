@@ -15,21 +15,21 @@ pub(crate) fn generate_world(mut world_map: ResMut<WorldMap>) {
     world_map.world_tiles = vec![vec![Tile { tile_type: TileType::Air }; height]; width];
 
     for col  in 0..width {
-        let noise_value: f64 = perlin.get([col as f64 * 0.05, 0.0]);
+        let noise_value: f64 = perlin.get([col as f64 * 0.01, 0.0]);
         let surface_height: usize = ((noise_value + 1.0) / 2.0 * height as f64) as usize;
         for row in 0..height {
             match row {
-                _ if row > surface_height => {
-                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Air}
+                _ if row < surface_height => {
+                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Air};
                 }
                 _ if row == surface_height => {
-                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Grass}
+                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Grass};
                 }
-                _ if row < surface_height && row > surface_height - 5 => {
-                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Dirt}
+                _ if row > surface_height && row < surface_height + 5 => {
+                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Dirt};
                 }
                 _ => {
-                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Stone}
+                    world_map.world_tiles[col][row] = Tile { tile_type: TileType::Stone};
                 },
             }
         }

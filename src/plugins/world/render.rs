@@ -6,9 +6,6 @@ pub(crate) fn render_world(mut commands: Commands, world_map: Res<WorldMap>, wor
     commands.spawn(Camera2d);
     for col in 0..world_map.world_width as usize {
         for row in 0.. world_map.world_height as usize {
-            if world_map.world_tiles[col][row].tile_type == TileType::Air {
-                continue;
-            }
 
             let tile_index = match world_map.world_tiles[col][row].tile_type {
                 TileType::Dirt => 0,
@@ -18,7 +15,7 @@ pub(crate) fn render_world(mut commands: Commands, world_map: Res<WorldMap>, wor
             };
 
             let x = col as f32 * 16.0 - (world_map.world_width as f32 * 16.0 / 2.0);
-            let y = row as f32 * 16.0 - (world_map.world_height as f32 * 16.0 / 2.0);
+            let y = -(row as f32 * 16.0) + (world_map.world_height as f32 * 16.0 / 2.0);
 
             commands.spawn((
                 Transform::from_xyz(x, y, 0.0),
@@ -30,7 +27,6 @@ pub(crate) fn render_world(mut commands: Commands, world_map: Res<WorldMap>, wor
                     },
                 ),
             ));
-
         }
     }
 }
