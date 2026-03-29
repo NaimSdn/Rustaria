@@ -16,7 +16,7 @@ pub struct Tile {
 #[derive(Resource)]
 #[derive(Default)]
 pub struct WorldMap {
-    world_width : u32,
-    world_height : u32,
-    world_tiles : Vec<Vec<Tile>>,
+    pub world_width : u32,
+    pub world_height : u32,
+    pub world_tiles : Vec<Vec<Tile>>,
 }
