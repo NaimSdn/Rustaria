@@ -1,3 +1,5 @@
+use bevy::prelude::Resource;
+
 #[derive(PartialEq, Debug, Copy, Clone)]
 pub enum TileType {
     Air,
@@ -12,6 +14,7 @@ pub struct Tile {
 }
 
 #[derive(Resource)]
+#[derive(Default)]
 pub struct WorldMap {
     world_width : u32,
     world_height : u32,
