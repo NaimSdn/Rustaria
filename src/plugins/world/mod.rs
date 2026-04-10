@@ -1,7 +1,7 @@
 mod asset;
 mod perlin;
 mod render;
-mod tile;
+pub(crate) mod tile;
 
 use crate::plugins::world::asset::load_image;
 use crate::plugins::world::perlin::generate_world;

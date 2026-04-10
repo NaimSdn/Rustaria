@@ -1,7 +1,7 @@
 use crate::plugins::player::player::init_player;
 use bevy::app::{App, Plugin, Startup};
 
-mod player;
+pub(crate) mod player;
 
 pub struct PlayerPlugin;
 
