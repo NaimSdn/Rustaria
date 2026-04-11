@@ -1,4 +1,5 @@
 mod plugins;
+mod constants;
 
 use crate::plugins::camera::CameraPlugin;
 use crate::plugins::input::InputPlugin;

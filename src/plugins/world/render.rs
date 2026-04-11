@@ -1,6 +1,7 @@
 use crate::plugins::world::asset::WorldTileset;
 use crate::plugins::world::tile::{TileType, WorldMap};
 use bevy::prelude::{Commands, Res, Sprite, TextureAtlas, Transform};
+use crate::constants::TILE_SIZE;
 
 pub(crate) fn render_world(
     mut commands: Commands,
@@ -16,8 +17,8 @@ pub(crate) fn render_world(
                 TileType::Air => continue,
             };
 
-            let x = col as f32 * 16.0 - (world_map.world_width as f32 * 16.0 / 2.0);
-            let y = -(row as f32 * 16.0) + (world_map.world_height as f32 * 16.0 / 2.0);
+            let x = col as f32 * TILE_SIZE - (world_map.world_width as f32 * TILE_SIZE / 2.0);
+            let y = -(row as f32 * TILE_SIZE) + (world_map.world_height as f32 * TILE_SIZE / 2.0);
 
             commands.spawn((
                 Transform::from_xyz(x, y, 0.0),
