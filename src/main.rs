@@ -1,6 +1,7 @@
 mod plugins;
 
 use crate::plugins::camera::CameraPlugin;
+use crate::plugins::input::InputPlugin;
 use crate::plugins::player::PlayerPlugin;
 use crate::plugins::world::WorldPlugin;
 use bevy::DefaultPlugins;
@@ -12,5 +13,6 @@ fn main() {
         .add_plugins(WorldPlugin)
         .add_plugins(CameraPlugin)
         .add_plugins(PlayerPlugin)
+        .add_plugins(InputPlugin)
         .run();
 }
