@@ -1,7 +1,7 @@
 use bevy::image::TextureAtlas;
 use bevy::prelude::{
     AssetServer, Assets, Commands, Component, Handle, Image, Res, ResMut, TextureAtlasLayout,
-    Transform, UVec2,
+    Transform, UVec2, Vec2,
 };
 use bevy::sprite::Sprite;
 
@@ -15,6 +15,11 @@ pub struct PlayerStats {
     pub health: f32,
     pub max_health: f32,
     pub speed: f32,
+}
+
+#[derive(Component)]
+pub struct Velocity {
+    pub value: Vec2,
 }
 
 pub(crate) fn init_player(
@@ -33,6 +38,9 @@ pub(crate) fn init_player(
             health: 100.0,
             max_health: 100.0,
             speed: 200.0,
+        },
+        Velocity {
+            value: Vec2::new(0.0, 0.0),
         },
         Transform::from_xyz(0.0, 0.0, 1.0),
         Sprite::from_atlas_image(
