@@ -1,7 +1,6 @@
 use crate::plugins::player::player::{Player, PlayerStats, Velocity};
 use bevy::app::{App};
-use bevy::prelude::{ButtonInput, IntoScheduleConfigs, KeyCode, Plugin, Query, Res, Transform, Update, With};
-use bevy::time::Time;
+use bevy::prelude::{ButtonInput, KeyCode, Plugin, Query, Res, Update, With};
 
 pub struct InputPlugin;
 
@@ -24,19 +23,8 @@ fn moving_player(
     }
 }
 
-fn apply_velocity(
-    mut query: Query<(&Velocity, &mut Transform), With<Player>>,
-    time: Res<Time>,
-) {
-    let Ok((velocity, mut transform)) = query.single_mut() else {
-        return;
-    };
-    transform.translation.x += velocity.value.x * time.delta_secs();
-    transform.translation.y += velocity.value.y * time.delta_secs();
-}
-
 impl Plugin for InputPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Update, (moving_player, apply_velocity).chain());
+        app.add_systems(Update, moving_player);
     }
 }

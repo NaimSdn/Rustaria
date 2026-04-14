@@ -8,6 +8,12 @@ pub enum TileType {
     Stone,
 }
 
+impl TileType {
+    pub fn is_solid(&self) -> bool {
+        matches!(self, TileType::Stone | TileType::Dirt | TileType::Grass)
+    }
+}
+
 #[derive(PartialEq, Debug, Copy, Clone)]
 pub struct Tile {
     pub tile_type: TileType,
