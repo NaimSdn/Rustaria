@@ -21,7 +21,6 @@ fn moving_player(
         velocity.value.y = stats.speed * 2.0;
     } else {
         velocity.value.x = 0.0;
-        velocity.value.y = 0.0;
     }
 }
 

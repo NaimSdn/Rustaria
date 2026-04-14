@@ -42,7 +42,7 @@ pub(crate) fn init_player(
         Velocity {
             value: Vec2::new(0.0, 0.0),
         },
-        Transform::from_xyz(0.0, 0.0, 1.0),
+        Transform::from_xyz(0.0, 300.0, 1.0),
         Sprite::from_atlas_image(
             handle_image.clone(),
             TextureAtlas {
