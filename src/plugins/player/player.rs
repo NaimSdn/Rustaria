@@ -1,7 +1,7 @@
 use bevy::image::TextureAtlas;
 use bevy::prelude::{
     AssetServer, Assets, Commands, Component, Handle, Image, Res, ResMut, TextureAtlasLayout,
-    Transform, UVec2, Vec2,
+    Transform, UVec2,
 };
 use bevy::sprite::Sprite;
 use bevy_rapier2d::prelude::{CoefficientCombineRule, Collider, Damping, Friction, GravityScale, LockedAxes, Restitution, RigidBody, Velocity};
