@@ -1,14 +1,14 @@
 use bevy::image::TextureAtlas;
 use bevy::prelude::{
     AssetServer, Assets, Commands, Component, Handle, Image, Res, ResMut, TextureAtlasLayout,
-    Transform, UVec2, Vec2,
+    Transform, UVec2,
 };
 use bevy::sprite::Sprite;
+use bevy_rapier2d::prelude::{CoefficientCombineRule, Collider, Damping, Friction, GravityScale, LockedAxes, Restitution, RigidBody, Velocity};
 
 #[derive(Component)]
 pub struct Player;
 
-// Unused PlayerStats health/max_health/speed for now.
 #[derive(Component)]
 #[allow(dead_code)]
 pub struct PlayerStats {
@@ -18,9 +18,7 @@ pub struct PlayerStats {
 }
 
 #[derive(Component)]
-pub struct Velocity {
-    pub value: Vec2,
-}
+pub struct Grounded(pub bool);
 
 pub(crate) fn init_player(
     mut commands: Commands,
@@ -39,10 +37,22 @@ pub(crate) fn init_player(
             max_health: 100.0,
             speed: 200.0,
         },
-        Velocity {
-            value: Vec2::new(0.0, 0.0),
+        RigidBody::Dynamic,
+        Collider::cuboid(8.0, 8.0),
+        Velocity::zero(),
+        GravityScale(1.0),
+        LockedAxes::ROTATION_LOCKED,
+        Damping {
+            linear_damping: 0.0,
+            angular_damping: 0.0,
         },
-        Transform::from_xyz(0.0, 0.0, 1.0),
+        Friction {
+            coefficient: 0.0,
+            combine_rule: CoefficientCombineRule::Min,
+        },
+        Restitution::coefficient(0.0),
+        Grounded(false),
+        Transform::from_xyz(0.0, 300.0, 1.0),
         Sprite::from_atlas_image(
             handle_image.clone(),
             TextureAtlas {
