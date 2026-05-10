@@ -1,6 +1,6 @@
 use crate::plugins::world::asset::WorldTileset;
 use crate::plugins::world::tile::{TileType, WorldMap};
-use bevy::prelude::{Commands, Res, Sprite, TextureAtlas, Transform, Vec2};
+use bevy::prelude::{Commands, Res, Sprite, TextureAtlas, Transform};
 use bevy_rapier2d::prelude::{Collider, RigidBody};
 use crate::constants::TILE_SIZE;
 
@@ -38,7 +38,6 @@ pub(crate) fn render_world(
         }
     }
 
-    // --- Colliders: one merged collider per contiguous vertical run per column ---
     for col in 0..width {
         let mut row = 0;
         while row < height {

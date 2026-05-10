@@ -9,7 +9,6 @@ use bevy_rapier2d::prelude::{CoefficientCombineRule, Collider, Damping, Friction
 #[derive(Component)]
 pub struct Player;
 
-// Unused PlayerStats health/max_health/speed for now.
 #[derive(Component)]
 #[allow(dead_code)]
 pub struct PlayerStats {

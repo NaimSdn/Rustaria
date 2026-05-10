@@ -1,6 +1,6 @@
 use crate::plugins::player::player::{Grounded, Player, PlayerStats};
-use bevy::prelude::{App, ButtonInput, Entity, IntoScheduleConfigs, KeyCode, Plugin, Query, Res, Transform, Update, Vec2, With};
-use bevy_rapier2d::prelude::{QueryFilter, RapierContext, Real, Velocity};
+use bevy::prelude::{App, ButtonInput, IntoScheduleConfigs, KeyCode, Plugin, Query, Res, Update, With};
+use bevy_rapier2d::prelude::{Velocity};
 
 pub struct InputPlugin;
 
